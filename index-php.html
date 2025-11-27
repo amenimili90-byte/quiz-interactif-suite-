@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz Informatique - Version PHP</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-php.css" />
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Quiz Interactif Multi-Thèmes</h1>
+    <p class="lead">Testez vos connaissances et défiez les autres joueurs <i class="fi fi-rr-rocket-lunch"></i></p>
+  </header>
+
+  <main class="container">
+    <!-- Écran d'accueil -->
+    <section id="welcome" class="card center">
+      <h2 style="font-size: 2rem; margin-bottom: 12px;">Bienvenue au Quiz Multithèmes !</h2>
+      <p style="font-size: 1.1rem; color: var(--text-muted); text-align: center; max-width: 500px;">
+        Découvrez nos quiz variés et testez vos connaissances dans différents domaines. 
+        Chronométré, avec système de scores sauvegardés et classements en temps réel !
+      </p>
+      <div class="controls">
+        <button id="start-btn" class="btn primary">
+          <span><i class="fi fi-rr-play"></i> Commencer</span>
+        </button>
+        <button id="view-instructions" class="btn">
+          <span><i class="fi fi-rr-info"></i> Instructions</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Interface du quiz -->
+    <section id="quiz" class="card hidden" aria-live="polite">
+      <div class="quiz-header">
+        <div class="meta">
+          <span id="q-index">1</span>/<span id="q-total">10</span>
+        </div>
+        <div class="progress" aria-hidden="true">
+          <div id="progress-bar"></div>
+        </div>
+        <div class="score" aria-hidden="true">
+          <i class="fi fi-rr-trophy"></i> <span id="score">0</span>
+        </div>
+      </div>
+
+      <article id="question-area" class="question-area">
+        <h3 id="question-text">Question ?</h3>
+        <div id="choices" class="choices" role="list"></div>
+      </article>
+
+      <div class="quiz-footer">
+        <button id="next-btn" class="btn primary" disabled>
+          <span>Suivant <i class="fi fi-rr-arrow-right"></i></span>
+        </button>
+        <button id="quit-btn" class="btn">
+          <span><i class="fi fi-rr-cross-small"></i> Quitter</span>
+        </button>
+      </div>
+
+      <div id="feedback" class="feedback" aria-live="assertive"></div>
+    </section>
+
+    <!-- Écran résultat -->
+    <section id="result" class="card hidden center">
+      <h2>Résultat Final</h2>
+      <p>Score : <strong id="final-score" style="color: var(--accent);">0</strong>/<span id="final-total">0</span></p>
+      <div id="result-message"></div>
+      <div class="controls">
+        <button id="retry-btn" class="btn primary">
+          <span><i class="fi fi-rr-refresh"></i> Réessayer</span>
+        </button>
+        <button id="home-btn" class="btn">
+          <span><i class="fi fi-rr-home"></i> Accueil</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal instructions -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <h3 id="modal-title"><i class="fi fi-rr-book-open-reader"></i> Instructions</h3>
+        <p>
+          • Créez un compte ou connectez-vous pour participer<br>
+          • Répondez aux questions dans le temps imparti<br>
+          • Vos scores sont sauvegardés automatiquement<br>
+          • Consultez le classement pour voir votre position<br>
+          • Analysez vos statistiques pour progresser<br>
+          • Interface responsive et accessible
+        </p>
+        <button id="close-modal" class="btn primary"><span>Compris !</span></button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>Quiz Interactif Multi-Thèmes • Version PHP avec Base de Données • Responsive & Accessible</small>
+  </footer>
+
+  <script src="script-php.js"></script>
+</body>
+</html>
