@@ -1,0 +1,10 @@
+{
+    "name": "quiz/interactif",
+    "description": "Système de quiz interactif",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {}
+}
