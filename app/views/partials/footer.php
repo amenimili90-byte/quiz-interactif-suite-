@@ -4,13 +4,13 @@
         <small>
             Quiz Interactif Multi-Thèmes • Version PHP avec Base de Données • 
             Responsive & Accessible • 
-            <a href="/QuizInteractif/public/admin" style="color: inherit;">
+            <a href="/quiz_interactif_suite/public/admin" style="color: inherit;">
                 Administration
             </a>
         </small>
     </footer>
 
-    <script src="/QuizInteractif/public/js/script-php.js"></script>
+    <script src="/quiz_interactif_suite/public/js/script-php.js"></script>
     
     <?php if (isset($_SESSION['success']) || isset($_SESSION['error'])): ?>
     <script>

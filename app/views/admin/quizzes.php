@@ -10,7 +10,7 @@
 <!-- Formulaire de création (caché par défaut) -->
 <div id="quiz-form" class="card hidden">
     <h3>Créer un nouveau quiz</h3>
-    <form method="POST" action="/QuizInteractif/public/admin/quiz/create">
+    <form method="POST" action="/quiz_interactif_suite/public/admin/quiz/create">
         <div class="form-group">
             <label>Clé du quiz:</label>
             <input type="text" name="quiz_key" required placeholder="ex: informatique">
@@ -59,7 +59,7 @@
                         </span>
                     </td>
                     <td>
-                        <a href="/QuizInteractif/public/admin/questions?quiz_id=<?php echo $quiz['id']; ?>" 
+                        <a href="/quiz_interactif_suite/public/admin/questions?quiz_id=<?php echo $quiz['id']; ?>" 
                            class="btn small">
                             Questions
                         </a>

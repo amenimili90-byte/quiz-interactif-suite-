@@ -1,6 +1,6 @@
 <?php
 /**
- * Contrôleur des scores et classements
+ * Contrôleur des scores et classements - CORRIGÉ
  */
 
 class ScoreController {
@@ -10,7 +10,11 @@ class ScoreController {
     public function __construct() {
         $this->scoreModel = new Score();
         $this->quizModel = new Quiz();
-        session_start();
+        
+        // Ne démarrer la session que si elle n'est pas déjà active
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
     public function leaderboard() {
@@ -25,24 +29,28 @@ class ScoreController {
         }
 
         if (isset($_SESSION['user_id'])) {
-            $userPosition = $this->scoreModel->getUserPosition($_SESSION['user_id'], $quizKey);
+            // Calculer la position de l'utilisateur (à implémenter dans Score.php)
+            $userPosition = null; // Simplified for now
         }
 
         $quizzes = $this->quizModel->getAllActive();
         
-        require_once '../app/views/score/leaderboard.php';
+        // Utiliser le chemin absolu
+        require_once __DIR__ . '/../views/score/leaderboard.php';
     }
 
     public function stats() {
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /login');
+            $_SESSION['error'] = 'Vous devez être connecté pour voir vos statistiques';
+            header('Location: ' . BASE_URL . '?page=login');
             exit;
         }
 
         $userId = $_SESSION['user_id'];
         $stats = $this->scoreModel->getUserStats($userId);
         
-        require_once '../app/views/score/stats.php';
+        // Utiliser le chemin absolu
+        require_once __DIR__ . '/../views/score/stats.php';
     }
 
     public function save() {
@@ -60,20 +68,26 @@ class ScoreController {
 
         $input = json_decode(file_get_contents('php://input'), true);
         
-        $result = $this->scoreModel->saveScore(
-            $_SESSION['user_id'],
-            $input['quiz_key'],
-            $input['score'],
-            $input['total_questions'],
-            $input['time_spent'],
-            $input['answers'] ?? []
-        );
+        try {
+            $result = $this->scoreModel->saveScore(
+                $_SESSION['user_id'],
+                $input['quiz_key'],
+                $input['score'],
+                $input['total_questions'],
+                $input['time_spent'],
+                $input['answers'] ?? []
+            );
 
-        if ($result) {
-            echo json_encode(['success' => true, 'data' => $result]);
-        } else {
+            if ($result) {
+                echo json_encode(['success' => true, 'data' => $result]);
+            } else {
+                http_response_code(500);
+                echo json_encode(['success' => false, 'error' => 'Erreur sauvegarde']);
+            }
+        } catch (Exception $e) {
             http_response_code(500);
-            echo json_encode(['success' => false, 'error' => 'Erreur sauvegarde']);
+            echo json_encode(['success' => false, 'error' => $e->getMessage()]);
         }
     }
 }
+?>

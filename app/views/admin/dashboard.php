@@ -25,10 +25,10 @@
 </div>
 
 <div class="admin-actions">
-    <a href="/QuizInteractif/public/admin/quizzes" class="btn primary">
+    <a href="/quiz_interactif_suite/public/admin/quizzes" class="btn primary">
         <i class="fi fi-rr-list"></i> Gérer les Quiz
     </a>
-    <a href="/QuizInteractif/public/admin/questions" class="btn primary">
+    <a href="/quiz_interactif_suite/public/admin/questions" class="btn primary">
         <i class="fi fi-rr-question"></i> Gérer les Questions
     </a>
 </div>

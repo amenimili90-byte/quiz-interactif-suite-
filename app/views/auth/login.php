@@ -15,7 +15,7 @@
         </div>
     <?php endif; ?>
 
-    <form method="POST" action="/QuizInteractif/public/login" class="auth-form">
+    <form method="POST" action="<?php echo BASE_URL; ?>?page=login" class="auth-form">
         <input type="text" name="identifier" placeholder="Nom d'utilisateur ou email" required>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit" class="btn primary">
@@ -25,7 +25,7 @@
 
     <p style="text-align: center; margin-top: 20px;">
         Pas de compte ? 
-        <a href="/QuizInteractif/public/register">S'inscrire</a>
+        <a href="/quiz_interactif_suite/public/register">S'inscrire</a>
     </p>
 </section>
 

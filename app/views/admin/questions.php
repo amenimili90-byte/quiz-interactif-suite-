@@ -9,7 +9,7 @@
         <select onchange="location = this.value;">
             <option value="">Choisir un quiz...</option>
             <?php foreach ($quizzes as $quiz): ?>
-            <option value="/QuizInteractif/public/admin/questions?quiz_id=<?php echo $quiz['id']; ?>"
+            <option value="/quiz_interactif_suite/public/admin/questions?quiz_id=<?php echo $quiz['id']; ?>"
                     <?php echo ($_GET['quiz_id'] ?? '') == $quiz['id'] ? 'selected' : ''; ?>>
                 <?php echo htmlspecialchars($quiz['title']); ?>
             </option>
@@ -28,7 +28,7 @@
 <!-- Formulaire de création de question -->
 <div id="question-form" class="card hidden">
     <h3>Créer une nouvelle question</h3>
-    <form method="POST" action="/QuizInteractif/public/admin/question/create">
+    <form method="POST" action="/quiz_interactif_suite/public/admin/question/create">
         <input type="hidden" name="quiz_id" value="<?php echo $_GET['quiz_id']; ?>">
         
         <div class="form-group">

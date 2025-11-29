@@ -9,7 +9,7 @@
         </div>
     <?php endif; ?>
 
-    <form method="POST" action="/QuizInteractif/public/register" class="auth-form">
+    <form method="POST" action="<?php echo BASE_URL; ?>?page=register" class="auth-form">
         <input type="text" name="username" placeholder="Nom d'utilisateur" required 
                pattern="[a-zA-Z0-9_]{3,20}" title="3-20 caractères alphanumériques">
         <input type="email" name="email" placeholder="Email" required>
@@ -22,7 +22,7 @@
 
     <p style="text-align: center; margin-top: 20px;">
         Déjà un compte ? 
-        <a href="/QuizInteractif/public/login">Se connecter</a>
+        <a href="/quiz_interactif_suite/public/login">Se connecter</a>
     </p>
 </section>
 
